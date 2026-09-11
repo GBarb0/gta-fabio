@@ -13,4 +13,17 @@ Una schermata iniziale neutra nasconde il tema del regalo: Play avvia insieme mu
 
 Nessuna compilazione richiesta. Immagini, copertina, Pricedown e audio sono locali; i font Google del layout originale hanno fallback di sistema.
 
+## Deploy su Coolify
+
+Il progetto include un `Dockerfile` pronto per Coolify. Crea una nuova applicazione Dockerfile collegata a questo repository, lascia vuoto il campo del comando di avvio e imposta la porta pubblica su `80`. Coolify costruirà l’immagine con Nginx e servirà il biglietto come sito statico.
+
+Per provarlo localmente:
+
+```bash
+docker build -t fabio-birthday .
+docker run --rm -p 8080:80 fabio-birthday
+```
+
+Apri quindi http://localhost:8080.
+
 La schermata regalo prosegue con «Da parte di tutti noi» alla pagina delle firme. Il pulsante per ricominciare si trova lì. Le cinque firme SVG originali sono in `firme/`; i tracciati sono incorporati in `index.html` con maschere animate, bianco e bordo rosa. Funzionano anche aprendo il file senza server. Con movimento ridotto tutte le firme sono visibili subito.

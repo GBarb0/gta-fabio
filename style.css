@@ -235,10 +235,11 @@ h1, .gift h2 {
   .signature-vector svg { height: 95px; }
 }
 
-/* The source signatures contain tiny detached pen dots; keep those marks hidden. */
-.signature-vector svg[aria-label="Firma di Gian"] > path[mask="url(#write-gian-1)"],
-.signature-vector svg[aria-label="Firma di Gian"] > path[mask="url(#write-gian-2)"],
-.signature-vector svg[aria-label="Firma di Gian"] > path[mask="url(#write-gian-4)"] { display: none; }
-
-/* Vale's detached finishing dot is intentionally revealed with the main stroke. */
-.signature-vector svg[aria-label="Firma di Vale"] > path[mask="url(#write-vale-1)"] { animation-delay: 1.4s; }
+/* Hide each whole signature until its first pen stroke begins. */
+.signature-vector { opacity: 0; animation: signature-appear .12s var(--signature-start) linear forwards; }
+.signature-vector:nth-child(1) { --signature-start: .455s; }
+.signature-vector:nth-child(2) { --signature-start: 2.818s; }
+.signature-vector:nth-child(3) { --signature-start: 5.182s; }
+.signature-vector:nth-child(4) { --signature-start: 7.545s; }
+.signature-vector:nth-child(5) { --signature-start: 9.909s; }
+@keyframes signature-appear { to { opacity: 1; } }
